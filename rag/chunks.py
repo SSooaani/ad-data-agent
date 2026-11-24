@@ -63,7 +63,7 @@ def load_chunks():
                 parts.append(current)
             for part, content in enumerate(parts):
                 body = '\n'.join(line for _, line in content)
-                prefix = f'# {title}\n���{category}\n'
+                prefix = f'# {title}\n类别：{category}\n'
                 if start and context:
                     prefix += context + '\n'
                 text = prefix + f'## {heading}\n' + body

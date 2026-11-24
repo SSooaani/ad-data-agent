@@ -120,6 +120,6 @@ def result_analyze(result_id, preview_rows=20):
         'records': rows[:preview_rows], 'column_summaries': summaries,
         'warnings': warnings, 'numeric_encoding': result['numeric_encoding'],
     }
-    context = '����������ʵֻ�� SQL ��ѯ������ͣ����� warnings��������������ݻ����롣\n'
+    context = '根据以下真实只读 SQL 查询结果解释；遵守 warnings，不编造额外数据或收入。\n'
     context += json.dumps(analysis, ensure_ascii=False, separators=(',', ':'))
     return {**analysis, 'agent_context': context}

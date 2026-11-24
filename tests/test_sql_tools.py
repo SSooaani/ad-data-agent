@@ -53,7 +53,7 @@ BAD_SQL = [
 
 class SQLToolsTest(unittest.TestCase):
     def test_catalog_is_live(self):
-        result = schema_search('campaign��click', 'raw_criteo_impression')
+        result = schema_search('campaign、click', 'raw_criteo_impression')
         columns = result['tables']['raw_criteo_impression']
         self.assertEqual({c['column_name']: c['data_type'] for c in columns},
                          {'campaign': 'bigint', 'click': 'smallint'})
@@ -105,14 +105,14 @@ class SQLToolsTest(unittest.TestCase):
         self.assertEqual(result['database_user'],'criteo_reader')
         analysis = result_analyze(result['result_id'], 5)
         self.assertEqual(analysis['records'],result['rows'])
-        self.assertIn('��ʵֻ�� SQL',analysis['agent_context'])
+        self.assertIn('真实只读 SQL',analysis['agent_context'])
         for row in result['rows']:
             self.assertGreaterEqual(int(row['impressions']),int(row['clicks']))
         with self.assertRaises(ValueError):
             result_analyze('../connection.json')
 
     def test_result_size_is_bounded(self):
-        sql = "SELECT '" + '��'*4000 + "' AS payload FROM raw_criteo_impression LIMIT 100"
+        sql = "SELECT '" + '汉'*4000 + "' AS payload FROM raw_criteo_impression LIMIT 100"
         result = sql_execute(sql)
         self.assertFalse(result['ok'])
         self.assertIn('1 MB',result['error'])

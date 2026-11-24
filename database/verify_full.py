@@ -62,7 +62,7 @@ def main():
         sequence = conn.exec_driver_sql('SELECT last_value,is_called FROM public.raw_criteo_impression_row_id_seq').one()
         assert tuple(sequence) == (stats['rows'] + 1, False)
     engine.dispose()
-    assert schema_search('campaign��click��timestamp', 'raw_criteo_impression')['found']
+    assert schema_search('campaign、click、timestamp', 'raw_criteo_impression')['found']
     query = '''WITH b AS (SELECT MAX(data_day) AS last_day FROM public.ads_campaign_daily)
         SELECT data_day,SUM(clicks) AS clicks FROM public.ads_campaign_daily CROSS JOIN b
         WHERE data_day BETWEEN GREATEST(1,b.last_day-6) AND b.last_day

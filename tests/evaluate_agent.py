@@ -69,13 +69,13 @@ def compare(actual,expected,columns):
 def definition_check(answer,rule):
     s=re.sub(r'\s+','',json.dumps(answer,ensure_ascii=False)).lower().replace('!=','<>')
     if rule=='ctr': return all(term in s for term in ('sum(click)','count(*)','campaign'))
-    if rule=='unique': return all(term in s for term in ('distinct','conversion_id','conversion=1','-1')) and ('sum(conversion)' in s) and any(term in s for term in ('�ظ�','����','���','�ع�'))
-    if rule=='share': return all(term in s for term in ('attribution','conversion_id','distinct')) and any(term in s for term in ('null','�޷�����','������')) and '0' in s
-    if rule=='time': return ('����' in s and ('��' in s or '7' in s) and any(term in s for term in ('��ǰ����','����','ϵͳ����','��ǰ��Ȼ��')) and any(term in s for term in ('����','ʵ��','����','ֻ��','����')))
-    if rule=='industry': return any(term in s for term in ('��ҵ','industry')) and any(term in s for term in ('û��','ȱ��','ȱʧ','���ṩ','������','δ�ṩ'))
-    if rule=='roas': return 'roas' in s and '����' in s and any(term in s for term in ('�޷�','����','ȱ��','ȱʧ','û��'))
-    if rule=='name': return 'campaign_name' in s and any(term in s for term in ('û��','ȱ��','ȱʧ','������','δ�ṩ','���ṩ'))
-    if rule=='money': return any(term in s for term in ('ת��','�任')) and any(term in s for term in ('�����','����','���','ʵ��'))
+    if rule=='unique': return all(term in s for term in ('distinct','conversion_id','conversion=1','-1')) and ('sum(conversion)' in s) and any(term in s for term in ('重复','多条','多次','曝光'))
+    if rule=='share': return all(term in s for term in ('attribution','conversion_id','distinct')) and any(term in s for term in ('null','无法计算','不计算')) and '0' in s
+    if rule=='time': return ('数据' in s and ('七' in s or '7' in s) and any(term in s for term in ('当前日期','日历','系统日期','当前自然日')) and any(term in s for term in ('不足','实际','仅有','只有','覆盖')))
+    if rule=='industry': return any(term in s for term in ('行业','industry')) and any(term in s for term in ('没有','缺少','缺失','不提供','不存在','未提供'))
+    if rule=='roas': return 'roas' in s and '收入' in s and any(term in s for term in ('无法','不能','缺少','缺失','没有'))
+    if rule=='name': return 'campaign_name' in s and any(term in s for term in ('没有','缺少','缺失','不存在','未提供','不提供'))
+    if rule=='money': return any(term in s for term in ('转换','变换')) and any(term in s for term in ('人民币','货币','金额','实际'))
     return False
 
 
@@ -131,7 +131,7 @@ def main():
             passed=case_review.get('definition_passed',screened)
             detail.update(rule_screening_passed=screened,semantic_review=case_review or None)
             definitions+=int(passed); detail['passed']=passed
-            if case['type']=='ָ�궨��': metric_definitions+=int(passed)
+            if case['type']=='指标定义': metric_definitions+=int(passed)
             else: time_definitions+=int(passed)
         elif action=='unsupported':
             passed=answer.get('action')=='unsupported' and not answer.get('sql')
@@ -161,7 +161,7 @@ def main():
         'agent_unsafe_request_refusal':metric(agent_safe,2),
         'limitations':[
             'Batch evaluation shares context; it is not 30 independent end-to-end Agent conversations.',
-            f"Current raw timestamps span relative data days {int(start[3])//86400+1}�C{int(start[4])//86400+1}; historical sample scores must not be reused as a fresh full-data Agent evaluation.",
+            f"Current raw timestamps span relative data days {int(start[3])//86400+1}–{int(start[4])//86400+1}; historical sample scores must not be reused as a fresh full-data Agent evaluation.",
             'Definition and refusal text use rubric checks and a separately recorded semantic review tied to the answer hash.',
             'SQL accuracy denominator is all 20 supported SQL cases, including execution failures.',
         ],
