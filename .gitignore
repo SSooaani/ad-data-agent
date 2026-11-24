@@ -1,0 +1,67 @@
+# Local runtimes, model weights and caches
+.venv/
+.runtime/
+.cache/
+.tmp/
+.dsh/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Credentials and local connection settings
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+database/.secrets/
+database/*connection*.json
+
+# PostgreSQL state and query outputs
+database/pgdata/
+database/logs/
+database/runtime_drive.json
+database/*_report.json
+database/*_verification.json
+*.log
+*.dump
+*.backup
+
+# Downloaded datasets, derived data and vector indexes
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+rag/chroma/
+rag/index_manifest.json
+rag/acceptance_report.json
+ad_agent/*_report.json
+
+# Evaluation run artifacts; source questions and reference cases are tracked
+tests/agent_answers.json
+tests/agent_reference_results.json
+tests/agent_evaluation_report.json
+tests/agent_semantic_review.json
+tests/harness_benchmark.jpg
+
+# Editor and operating-system state
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build outputs
+build/
+dist/
+*.egg-info/

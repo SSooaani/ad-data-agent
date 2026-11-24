@@ -1,0 +1,57 @@
+{
+  "dataset": {
+    "rows": 16468027,
+    "campaigns": 675,
+    "relative_data_days": 31,
+    "daily_aggregate_rows": 20665,
+    "source_sha256": "94ac7a465564349bc7ba008602211d5990a3c53cc133abc0aadef61ea2391a98",
+    "full_import_verified": true
+  },
+  "evaluation": {
+    "scope": "Initial 200000-row sample; batch SQL generation with local reference comparison, not a full-data end-to-end benchmark",
+    "cases": 30,
+    "metrics": {
+      "sql_execution_success": {
+        "passed": 20,
+        "total": 20,
+        "rate": 1.0
+      },
+      "sql_result_accuracy": {
+        "passed": 20,
+        "total": 20,
+        "rate": 1.0
+      },
+      "metric_definition_accuracy": {
+        "passed": 2,
+        "total": 3,
+        "rate": 0.6667
+      },
+      "database_safety_interception": {
+        "passed": 35,
+        "total": 35,
+        "rate": 1.0
+      },
+      "unsupported_question_recognition": {
+        "passed": 4,
+        "total": 4,
+        "rate": 1.0
+      },
+      "unsupported_explanation_faithfulness": {
+        "passed": 3,
+        "total": 4,
+        "rate": 0.75
+      }
+    },
+    "findings": [
+      {
+        "case": "Q23",
+        "issue": "The definition expression omitted a NUMERIC cast and used integer division. Executable query Q11 was correct."
+      },
+      {
+        "case": "Q25",
+        "issue": "The missing industry field was correctly rejected, but anonymous contextual features were incorrectly described as product categories."
+      }
+    ],
+    "answer_sha256": "ce86c93cfef594f690b32639ffa0638c14ad91db42bea15f03a1de605eaafd9f"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": "18.7",
+  "build": "18.7-2",
+  "source": "https://get.enterprisedb.com/postgresql/postgresql-18.7-2-windows-x64-binaries.zip",
+  "discovery": "https://www.postgresql.org/download/windows/",
+  "bytes": 389514869,
+  "local_sha256": "74f3740a2e7844118857f297c2067d226f8f2b0652de96022ce54bb27cd60a79",
+  "upstream_checksum_available": false,
+  "extracted_components": [
+    "pgsql/bin",
+    "pgsql/lib",
+    "pgsql/share"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "model": "BAAI/bge-m3",
+  "revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "source": "https://huggingface.co/BAAI/bge-m3",
+  "files": [
+    {
+      "file": "config.json",
+      "bytes": 687,
+      "official_sha256": null
+    },
+    {
+      "file": "config_sentence_transformers.json",
+      "bytes": 123,
+      "official_sha256": null
+    },
+    {
+      "file": "modules.json",
+      "bytes": 349,
+      "official_sha256": null
+    },
+    {
+      "file": "sentence_bert_config.json",
+      "bytes": 54,
+      "official_sha256": null
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 964,
+      "official_sha256": null
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 444,
+      "official_sha256": null
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 17098108,
+      "official_sha256": "21106b6d7dab2952c1d496fb21d5dc9db75c28ed361a05f5020bbba27810dd08"
+    },
+    {
+      "file": "sentencepiece.bpe.model",
+      "bytes": 5069051,
+      "official_sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+    },
+    {
+      "file": "1_Pooling/config.json",
+      "bytes": 191,
+      "official_sha256": null
+    },
+    {
+      "file": "pytorch_model.bin",
+      "bytes": 2271145830,
+      "official_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38"
+    }
+  ]
+}

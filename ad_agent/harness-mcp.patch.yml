@@ -1,0 +1,17 @@
+- id: mcp-manager
+  config:
+    servers:
+      ads_knowledge:
+        transport: stdio
+        command: 'D:\Projects\ad-data-agent\.venv\Scripts\python.exe'
+        args:
+          - '-u'
+          - '-m'
+          - 'ad_agent.mcp_server'
+        cwd: 'D:\Projects\ad-data-agent'
+        env:
+          PYTHONUTF8: '1'
+          PYTHONIOENCODING: 'utf-8'
+        startupTimeoutMs: 30000
+        toolCallTimeoutMs: 180000
+        enabled: true
